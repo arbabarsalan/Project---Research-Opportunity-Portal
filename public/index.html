@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Opportunity Portal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Research Opportunities</h1>
+    <p>One place for every open position in the university.</p>
+  </div>
+  <button id="newBtn" class="btn primary">Post an opportunity</button>
+</header>
+
+<main>
+  <div class="tools">
+    <input id="search" type="search" placeholder="Search title, area, faculty or skill" aria-label="Search">
+    <select id="filter" aria-label="Filter by status">
+      <option value="">All statuses</option>
+      <option value="Open">Open</option>
+      <option value="Closed">Closed</option>
+    </select>
+  </div>
+  <p id="count" class="muted"></p>
+  <div id="list" class="list"></div>
+</main>
+
+<dialog id="detailDlg"><div id="detail"></div></dialog>
+
+<dialog id="formDlg">
+  <form id="form" novalidate>
+    <h2 id="formTitle">Post an opportunity</h2>
+    <label>Research title<input name="title" maxlength="200" required></label>
+    <label>Description<textarea name="description" rows="4" required></textarea></label>
+    <div class="row">
+      <label>Research area<input name="research_area" required></label>
+      <label>Department<input name="department" required></label>
+    </div>
+    <label>Faculty member's name<input name="faculty_name" required></label>
+    <label>Required skills <small>(separate with commas)</small><input name="required_skills" required></label>
+    <div class="row">
+      <label>Available positions<input name="positions" type="number" min="1" step="1" required></label>
+      <label>Application deadline<input name="deadline" type="date" required></label>
+      <label>Status
+        <select name="status"><option>Open</option><option>Closed</option></select>
+      </label>
+    </div>
+    <p id="formError" class="error" role="alert"></p>
+    <div class="actions">
+      <button type="button" class="btn" id="cancelBtn">Cancel</button>
+      <button type="submit" class="btn primary" id="saveBtn">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="confirmDlg">
+  <h2>Delete this opportunity?</h2>
+  <p id="confirmText"></p>
+  <div class="actions">
+    <button class="btn" id="noBtn">Keep it</button>
+    <button class="btn danger" id="yesBtn">Delete</button>
+  </div>
+</dialog>
+
+<div id="toasts" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
